@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.calenarrna</groupId>
     <artifactId>ca-pet-clinic</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>ca-pet-clinic</name>
     <description>Demo project for Spring Boot</description>
     <properties>
@@ -45,7 +45,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/CalenArrna/ca-pet-clinic.git</developerConnection>
-      <tag>ca-pet-clinic-0.0.3</tag>
+      <tag>ca-pet-clinic-0.0.2</tag>
   </scm>
 
 </project>
