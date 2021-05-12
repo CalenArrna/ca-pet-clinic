@@ -1,11 +1,11 @@
 package com.calenarrna.capetclinic.services.map;
 
 import com.calenarrna.capetclinic.model.Vet;
-import com.calenarrna.capetclinic.services.CrudService;
+import com.calenarrna.capetclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {

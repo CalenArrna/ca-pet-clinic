@@ -1,11 +1,11 @@
 package com.calenarrna.capetclinic.services.map;
 
 import com.calenarrna.capetclinic.model.Owner;
-import com.calenarrna.capetclinic.services.CrudService;
+import com.calenarrna.capetclinic.services.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -33,4 +33,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
     }
 
 
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
+    }
 }
