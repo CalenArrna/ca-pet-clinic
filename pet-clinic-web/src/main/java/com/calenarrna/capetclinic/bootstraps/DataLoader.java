@@ -4,8 +4,6 @@ import com.calenarrna.capetclinic.model.Owner;
 import com.calenarrna.capetclinic.model.Vet;
 import com.calenarrna.capetclinic.services.OwnerService;
 import com.calenarrna.capetclinic.services.VetService;
-import com.calenarrna.capetclinic.services.map.OwnerServiceMap;
-import com.calenarrna.capetclinic.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +14,9 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
 
 
-    public DataLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override

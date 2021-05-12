@@ -2,9 +2,10 @@ package com.calenarrna.capetclinic.services.map;
 
 import com.calenarrna.capetclinic.model.Pet;
 import com.calenarrna.capetclinic.services.CrudService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
 
     @Override
