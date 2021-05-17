@@ -1,12 +1,23 @@
 package com.calenarrna.capetclinic.services.map;
 
 import com.calenarrna.capetclinic.model.Owner;
+import com.calenarrna.capetclinic.model.Pet;
 import com.calenarrna.capetclinic.services.OwnerService;
+import com.calenarrna.capetclinic.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+
 @Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
+
+    private final PetTypeService petTypeService;
+    private final PetServiceMap petServiceMap;
+
+    public OwnerServiceMap(PetTypeService petTypeService, PetServiceMap petServiceMap) {
+        this.petTypeService = petTypeService;
+        this.petServiceMap = petServiceMap;
+    }
 
     @Override
     public Set<Owner> findAll() {
@@ -20,7 +31,21 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner owner) {
-        return super.save(owner);
+        if (owner != null) {
+            if (owner.getPets() != null) {
+                owner.getPets().forEach(pet -> {
+                    if (pet.getPetType() != null) {
+                        if (pet.getPetType().getId() == null) pet.setPetType(petTypeService.save(pet.getPetType()));
+                    } else throw new RuntimeException("PetType is required!");
+                    if (pet.getId() == null) {
+                        Pet savedPet = petServiceMap.save(pet);
+                        pet.setId(savedPet.getId());
+                    }
+                });
+            }
+            return super.save(owner);
+        } else return null;
+
     }
 
     @Override
