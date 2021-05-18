@@ -1,15 +1,15 @@
 package com.calenarrna.capetclinic.services.map;
 
-import com.calenarrna.capetclinic.model.Speciality;
-import com.calenarrna.capetclinic.services.SpecialitiesService;
+import com.calenarrna.capetclinic.model.Specialty;
+import com.calenarrna.capetclinic.services.SpecialtyService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialitiesServiceMap extends AbstractMapService<Speciality, Long> implements SpecialitiesService {
+public class SpecialtyServiceMap extends AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
-    public Set<Speciality> findAll() {
+    public Set<Specialty> findAll() {
         return super.findAll();
     }
 
@@ -19,17 +19,17 @@ public class SpecialitiesServiceMap extends AbstractMapService<Speciality, Long>
     }
 
     @Override
-    public void delete(Speciality object) {
+    public void delete(Specialty object) {
         super.delete(object);
     }
 
     @Override
-    public Speciality save(Speciality object) {
+    public Specialty save(Specialty object) {
         return super.save(object);
     }
 
     @Override
-    public Speciality findById(Long id) {
+    public Specialty findById(Long id) {
         return super.getById(id);
     }
 }
