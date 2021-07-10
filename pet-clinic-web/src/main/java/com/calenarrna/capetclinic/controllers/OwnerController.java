@@ -30,24 +30,25 @@ public class OwnerController {
     }
 
     @RequestMapping({"/find"})
-    public String findOwners (Model model) {
+    public String findOwners(Model model) {
         model.addAttribute("owner", Owner.builder().build());
         return "owners/findOwners";
     }
+
     @GetMapping("")
-    public String processFindForm (Owner owner, BindingResult result, Model model) {
+    public String processFindForm(Owner owner, BindingResult result, Model model) {
 
         if (owner.getLastName() == null) owner.setLastName("");
 
-        Set<Owner> setOfOwners = ownerService.findAllByLastNameLike(owner.getLastName());
+        Set<Owner> setOfOwners = ownerService.findAllByLastNameLike("%" + owner.getLastName() + "%");
 
         if (setOfOwners.isEmpty()) {
             result.rejectValue("lastName", "notFound", "not found");
             return "owners/findOwners";
-        }else if (setOfOwners.size() == 1) {
+        } else if (setOfOwners.size() == 1) {
             owner = setOfOwners.iterator().next();
             return "redirect:/owners/" + owner.getId();
-        }else {
+        } else {
             model.addAttribute("selections", setOfOwners);
             return "owners/ownersList";
         }
